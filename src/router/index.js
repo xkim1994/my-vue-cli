@@ -23,7 +23,11 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from) {
+    from.meta.scrollTop = window.scrollY;
+    return {x: 0, y: to.meta.scrollTop || 0};
+  }
 })
 
 export default router
